@@ -1,0 +1,10 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+	    <referenceContainer name="content">
+		    <container name="customer.login.row" htmlTag="div" htmlClass="row">
+			    <container name="customer.login.col" htmlTag="div" htmlClass="col-xs-12 col-sm-10 col-md-8 col-lg-6 white" />
+		    </container>
+	    </referenceContainer>
+	    <move element="customer.login.container" destination="customer.login.col" />
+    </body>
+</page>

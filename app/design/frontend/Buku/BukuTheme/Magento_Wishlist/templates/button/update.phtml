@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php if ($block->getWishlist()->getItemsCount()): ?>
+<div class="col-xs-12 col-sm-6 col-lg-3">
+    <button type="submit" name="do" title="<?php /* @escapeNotVerified */ echo __('Update Wish List') ?>" class="action update">
+        <span><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php /* @escapeNotVerified */ echo __('Update Wish List') ?></span>
+    </button>
+</div>
+<?php endif;?>

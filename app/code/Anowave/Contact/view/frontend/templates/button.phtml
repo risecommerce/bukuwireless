@@ -1,0 +1,69 @@
+<div class="form-confirmation">
+	<div><?php echo __('Thank you. Your message was sent successfully.') ?></div>
+</div>
+<button class="action primary cta" onclick="return CF.submit(this)">Send</button>
+<script type="text/javascript">
+
+	var CF = (function()
+	{
+		return {
+			progress: false,
+			submit: function(target)
+			{
+				require(['jquery'],function($)
+				{
+					if (!CF.progress)
+					{
+						/**
+						 * Prevent furher processing
+						 */
+						CF.progress = true;
+						
+						var speed = 300,element = $(target), form = $(target).parents('form:first'), wrapper = $('[data-errors]'), confirmation = $('.form-confirmation');
+	
+						element.text('Sending. Please wait...');
+
+						$.post('<?php echo $this->getUrl('form') ?>', form.serialize(), function(response)
+						{
+							if (response.errors.length)
+							{
+								/**
+								 * Empty any previous errors
+								 */
+								wrapper.empty();
+								
+								$.each(response.errors, function(index, error)
+								{
+									var row = $('<div/>').append(error).appendTo(wrapper);
+								});	
+	
+								wrapper.parent().slideDown(speed);
+								confirmation.slideUp(speed);
+							}
+							else 
+							{
+								wrapper.parent().slideUp(speed);
+								
+								/**
+								 * Show success message & cleanup
+								 */
+								confirmation.find('>div').html(response.message).end().slideDown(speed);
+							}
+	
+							/**
+							 * Reset loading indicator
+							 */
+							element.text('Send');
+
+							CF.progress = false;
+							
+						},'json');
+					}
+				});
+
+				return false;
+			}
+		}
+	})();
+
+</script>

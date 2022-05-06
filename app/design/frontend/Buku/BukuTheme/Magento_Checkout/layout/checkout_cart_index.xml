@@ -1,0 +1,20 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+	    <referenceContainer name="main.content">
+		    <block name="checkout.cart.breadcrumbs" class="Magento\Framework\View\Element\Template" template="Magento_Checkout::cartbreadcrumbs.phtml" before="-" />
+	    </referenceContainer>
+	    <referenceBlock name="page.main.title" remove="true" />
+	    <referenceContainer name="main.content">
+		    <container name="cart.checkout.crosssell.related.items.carousel" after="columns" />
+	    </referenceContainer>
+	    <move element="checkout.cart.crosssell" destination="cart.checkout.crosssell.related.items.carousel" />
+	    <referenceContainer name="content">
+		    <container name="checkout.cart.totals.container.wrap" />
+		    <container name="checkout.after.cart.totals" />
+	    </referenceContainer>
+	    <move element="checkout.cart.totals.container" destination="checkout.cart.totals.container.wrap" />
+	    <move element="checkout.cart.shipping" destination="checkout.after.cart.totals" />
+	    <move element="checkout.cart.coupon" destination="checkout.after.cart.totals" />
+	    <move element="checkout.cart.methods.bottom" destination="checkout.after.cart.totals" />
+    </body>
+</page>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="empty"/>
+    <referenceContainer name="page.wrapper">
+        <container name="header.container" as="header_container" label="Page Header Container"  htmlTag="header" htmlClass="page-header" before="main.content"/>
+        <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
+        <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer" />
+    </referenceContainer>
+    <referenceContainer name="page.wrapper">
+       <container name="columns.top" label="Before Main Columns" after="page.top" />
+       <container name="wholesale-hero" htmlTag="div" htmlClass="wholesale-hero text-center white not-fullscreen background parallax" after="columns.top">
+	       <block class="Magento\Cms\Block\Block" name="wholesale-hero-block">
+	            <arguments>
+	                <argument name="block_id" xsi:type="string">wholesale-hero</argument>
+	            </arguments>
+	        </block>
+	        <container name="wholesale-hero-subtitle" htmlTag="div" htmlClass="h4">
+		       <block class="Magento\Cms\Block\Block" name="wholesale-subtitle-block">
+		            <arguments>
+		                <argument name="block_id" xsi:type="string">wholesale-page-subtitle</argument>
+		            </arguments>
+		        </block>
+	        </container>
+		   	<block name="wholesale.hero.bottom" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/wholesalehero.phtml" />
+       </container>
+        <container name="main.content" htmlTag="main" htmlId="maincontent" htmlClass="page-main" after="wholesale-hero">
+	        <container name="columns" htmlTag="div" htmlId="wholesale-benefits" htmlClass="columns">
+		        <container name="benefits.row" htmlTag="div" htmlClass="row">
+		            <container name="wholesale-benefits" htmlTag="div" htmlClass="col-xs-12 col-sm-8">
+		            	<container name="main" label="Main Content Container" htmlTag="div" htmlClass="column main"/>
+		            </container>
+		        </container>
+	        </container>
+	        <container name="wholesale.faq" htmlTag="div" htmlId="wholesale-faq" htmlClass="not-fullscreen background parallax">
+		        <container name="wholesale.faq.container" htmlTag="div" htmlClass="columns container">
+		        	<!--block name="wholesale.faq.template" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/wholesalefaq.phtml" /-->
+			       <block class="Magento\Cms\Block\Block" name="wholesale-faq-block">
+			            <arguments>
+			                <argument name="block_id" xsi:type="string">wholesale-faq</argument>
+			            </arguments>
+			        </block>		       
+		        </container>
+	        </container>
+        </container>
+        <container name="wholesale-block-container" htmlTag="div" htmlId="wholesale-block">
+	        <container name="wholesale-apply-wrapper" htmlTag="div" htmlClass="wholesale-apply-wrapper">
+		        <container name="wholesale-apply-wrapper-container" htmlTag="div" htmlClass="container">
+			       <block class="Magento\Cms\Block\Block" name="wholesale-apply">
+			            <arguments>
+			                <argument name="block_id" xsi:type="string">wholesale-application-block</argument>
+			            </arguments>
+			        </block>
+		        </container>
+	        </container>
+        </container>        
+    </referenceContainer>
+</layout>

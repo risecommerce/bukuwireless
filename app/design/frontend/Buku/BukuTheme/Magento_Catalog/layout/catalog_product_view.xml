@@ -1,0 +1,34 @@
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+	    <referenceContainer name="content">
+		    <container name="product.view.row" htmlTag="div" htmlClass="row" before="-">
+			    <container name="product.view.col.left" htmlTag="div" htmlClass="col-xs-12 col-sm-6 col-lg-4 product-column" />
+			    <container name="product.view.col.right" htmlTag="div" htmlClass="col-xs-12 col-sm-6 col-lg-8 text-center product-column">
+				    <container name="product.view.info.box" htmlTag="div" htmlId="product-info-box" />
+			    </container>
+			    <container name="product.view.col.right.2" htmlTag="div" htmlClass="col-xs-12 col-lg-8 pull-right product-column">
+				    <container name="product.info.secondary" htmlTag="div" htmlClass="product-info-secondary" />
+				    <container name="product.social.share" htmlTag="div" htmlClass="product-social-share text-center">
+						<block name="product.social.share.block" class="Magento\Framework\View\Element\Template" template="Magento_Catalog::product/view/socialshare.phtml" />
+				    </container>
+			    </container>
+		    </container>
+	    </referenceContainer>
+		<move element="product.price.final" destination="price.heading" before="-" />
+		<move element="product.info.main" destination="product.view.info.box" before="-" />
+		<move element="product.info.media" destination="product.view.col.left" />
+		<referenceBlock name="product.info.media.video" remove="true" />
+		<referenceContainer name="product.info.type">
+			<container name="price.heading" htmlTag="div" htmlClass="h2 font-light title-wrap" before="-" />
+		</referenceContainer>
+		<referenceBlock name="product.info.review" remove="true" />
+		<referenceBlock name="product.attributes" remove="true" />
+		<move element="product.info.details" destination="product.info.secondary" />
+		<!--move element="product.attributes" destination="content.aside" /-->
+		<referenceBlock name="product.info.upsell" remove="true" />
+		<referenceContainer name="main.content">
+			<container name="buku.related.products" after="columns" />
+		</referenceContainer>
+		<move element="content.aside" destination="buku.related.products" />
+    </body>
+</page>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
+	<widget id="anowave_contact" class="Anowave\Contact\Block\Widget\Form">
+		<label translate="true">Contact Form</label>
+		<description>Add contact form</description>
+		<parameters>
+			<parameter name="form" xsi:type="select" source_model="Anowave\Contact\Model\Config\Source\Form" visible="true" sort_order="10" >
+				<label translate="true">Select form</label>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>

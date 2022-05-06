@@ -1,0 +1,124 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<form class="form contact returns"
+      action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+      id="returns-contact-form"
+      method="post"
+      data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+	<h2>Return an Order</h2>
+    <fieldset class="fieldset">
+	    <legend class="legend"><h3><span><?php /* @escapeNotVerified */ echo __('Order Information') ?></span></h3></legend>
+	    <div class="row">
+	        <div class="field name required col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label" for="name"><span><?php /* @escapeNotVerified */ echo __('Name') ?></span></label>
+	            <div class="control">
+	                <input name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+	            </div>
+	        </div>
+	        <div class="field email required col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+	            <div class="control">
+	                <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+	            </div>
+	        </div>
+	        <div class="field telephone col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label" for="telephone"><span><?php /* @escapeNotVerified */ echo __('Phone Number') ?></span></label>
+	            <div class="control">
+	                <input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="" class="input-text" type="text" />
+	            </div>
+	        </div>
+	        <div class="field order_ID required col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label" for="order_ID"><span><?php /* @escapeNotVerified */ echo __('Order ID') ?></span></label>
+	            <div class="control">
+	                <input name="order_ID" id="order_ID" title="<?php /* @escapeNotVerified */ echo __('Order ID') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+	            </div>
+	        </div>
+	        <div class="field order_date col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label" for="order_date"><span><?php /* @escapeNotVerified */ echo __('Order Date') ?></span></label>
+	            <div class="control">
+	                <input name="order_date" id="order_date" title="<?php /* @escapeNotVerified */ echo __('Order Date') ?>" value="" class="hasDatepicker" type="text"/>
+					<script>
+					     require([
+					          "jquery",
+					          "mage/calendar"
+					     ], function($){
+					         $("#order_date").calendar({
+					              buttonText:"<?php echo __('Select Date') ?>",
+					         });
+					       });
+					</script>
+	            </div>
+	        </div>
+	    </div>
+    </fieldset>
+    <fieldset class="fieldset">
+	    <legend class="legend"><h3><span><?php /* @escapeNotVerified */ echo __('Product Information &amp; Reason for Return') ?></span></h3></legend>
+	    <div class="row row-flex">
+	        <div class="field product_name required col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label" for="product_name"><span><?php /* @escapeNotVerified */ echo __('Product Name') ?></span></label>
+	            <div class="control">
+	                <input name="product_name" id="product_name" title="<?php /* @escapeNotVerified */ echo __('Product Name') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+	            </div>
+	        </div>
+	        <div class="field product_code required col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label" for="product_code"><span><?php /* @escapeNotVerified */ echo __('Product Code') ?></span></label>
+	            <div class="control">
+	                <input name="product_code" id="product_code" title="<?php /* @escapeNotVerified */ echo __('Product Code') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+	            </div>
+	        </div>
+	        <div class="field quantity required col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label" for="quantity"><span><?php /* @escapeNotVerified */ echo __('Quantity') ?></span></label>
+	            <div class="control">
+	                <input name="quantity" id="quantity" title="<?php /* @escapeNotVerified */ echo __('Quantity') ?>" value="1" maxlength="12" class="input-text" type="number"/>
+	            </div>
+	        </div>
+	        <div class="field reason_for_return required col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label" for="reason_for_return"><span><?php /* @escapeNotVerified */ echo __('Reason for Return') ?></span></label>
+	            <div class="control">
+                    <select name="reason_for_return" id="reason_for_return" title="<?php /* @escapeNotVerified */ echo __('Reason for Return') ?>" class="validate-select" data-validate="{required:true}">
+                        <option value="0"><?php /* @escapeNotVerified */ echo __('Dead on Arrival') ?></option>
+                        <option value="1"><?php /* @escapeNotVerified */ echo __('Faulty (Please Supply Details)') ?></option>
+                        <option value="2"><?php /* @escapeNotVerified */ echo __('Order Error') ?></option>
+                        <option value="3"><?php /* @escapeNotVerified */ echo __('Received Wrong Item') ?></option>
+                        <option value="4"><?php /* @escapeNotVerified */ echo __('Other (Please Supply Details)') ?></option>
+                    </select>
+	            </div>
+	        </div>
+	        <div class="field product_is_opened required col-xs-12 col-sm-6 col-lg-4">
+	            <label class="label"><span><?php /* @escapeNotVerified */ echo __('Product is Opened') ?></span></label>
+	            <div class="control">
+		            <label class="label" for="product_is_opened-yes"><span><?php /* @escapeNotVerified */ echo __('Yes') ?></span></label>
+	                <input name="product_is_opened" id="product_is_opened-yes" value="0" type="radio"/>
+	            </div>
+	            <div class="control">
+		            <label class="label" for="product_is_opened-no"><span><?php /* @escapeNotVerified */ echo __('No') ?></span></label>
+	                <input name="product_is_opened" id="product_is_opened-no" value="1" type="radio" checked="checked"/>
+	            </div>
+	        </div>
+		    
+	        <div class="field details required col-xs-12 col-sm-8 col-lg-6">
+	            <label class="label" for="details"><span><?php /* @escapeNotVerified */ echo __('Faulty or Other Details') ?></span></label>
+	            <div class="control">
+	                <textarea name="details" id="details" title="<?php /* @escapeNotVerified */ echo __('Faulty or Other Details') ?>" class="input-text" cols="5" rows="5"></textarea>
+	            </div>
+	        </div>
+	    </div>
+        <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary cta">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+</form>

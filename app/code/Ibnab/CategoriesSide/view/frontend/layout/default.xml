@@ -1,0 +1,7 @@
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceContainer name="header-bottom-container">
+			<block class="Ibnab\CategoriesSide\Block\CategorisCollection" name="categoriecollection.topnav" template="Ibnab_CategoriesSide::storecategories.phtml"/>
+		</referenceContainer>
+	</body>
+</page>

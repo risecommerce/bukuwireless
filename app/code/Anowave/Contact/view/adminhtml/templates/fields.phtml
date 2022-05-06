@@ -1,0 +1,72 @@
+<table class="admin__control-table" id="fields-table">
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th width="50"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($this->getAttributesCurrent() as $current => $option):?>
+			<tr>
+				<td>
+					<select name="field_form_attribute_id[]">
+						<?php foreach($this->getAttributes() as $id => $attribute): ?>
+							<option value="<?php echo $id ?>" <?php if ($current == $id):?>selected<?php endif ?>><?php echo $attribute ?></option>
+						<?php endforeach ?>
+					</select>
+				</td>
+				<td width="50">
+					<button class="scalable" onclick="Fields.remove(this)">Delete</button>
+				</td>
+			</tr>
+		<?php endforeach ?>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th colspan="5">
+				<button id="add_new_field_button" title="Add new field" type="button" class="scalable" onclick="Fields.add(this)">
+					<span>Add new field</span>
+				</button>
+			</th>
+		</tr>
+	</tfoot>
+</table>
+<script id="field" type="text/x-magento-template">
+	<tr>
+		<td>
+			<select name="field_form_attribute_id[]">
+				<?php foreach($this->getAttributes() as $id => $attribute): ?>
+					<option value="<?php echo $id ?>"><?php echo $attribute ?></option>
+				<?php endforeach ?>
+			</select>
+		</td>
+		<td width="50">
+			<button class="scalable" onclick="Fields.remove(this)">Delete</button>
+		</td>
+	</tr>
+</script>
+<script>
+	var Fields = {};
+	
+	require(["jquery","mage/template"], function(jQuery, mageTemplate)
+	{
+		Fields = (function($)
+		{
+			return {
+				add: function()
+				{
+					var template = mageTemplate('[id=field]'), element = template();
+
+					/**
+					 * Append element
+					 */
+					$('[id=fields-table] tbody').append(element);
+				},
+				remove: function(target)
+				{
+					$(target).parents('tr:first').remove();
+				}
+			}
+		})(jQuery)
+	});
+</script>

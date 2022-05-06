@@ -1,0 +1,42 @@
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="catalog.topnav" remove="true" />
+        <referenceContainer name="header.panel" remove="true" />
+        <referenceBlock name="header" remove="true" />
+		<referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">426</argument> 
+                <argument name="logo_img_height" xsi:type="number">245</argument>
+            </arguments>
+		</referenceBlock>
+		<referenceBlock name="report.bugs" remove="true" />
+		<move element="top.links" destination="sign-in-wrapper" />
+		<referenceContainer name="header-wrapper" htmlClass="top-header">
+				<container name="header-top-container" label="Header Top Container" as="header-top-container" htmlTag="div" htmlClass="container">
+					<container name="header-top-container-right" label="Header Top Container Right" as="header-top-container-right" htmlTag="div" htmlClass="pull-right header-top-right">
+						<block name="header-right-links" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/headerrightlinks.phtml" />
+						<container name="sign-in-wrapper" label="Sign In Wrapper" as="sign-in-wrapper" htmlTag="div" htmlClass="sign-in-wrapper">
+							<block name="sign-in-background" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/headervector.phtml" />
+						</container>
+					</container>
+				</container>
+		</referenceContainer>
+		<referenceBlock name="footer_links" remove="true" />
+		<referenceContainer name="header.container">
+			<container name="header-bottom" label="Header Menu" as="header-bottom" htmlTag="div" htmlClass="bottom-header">
+				<container name="header-bottom-container" label="Header Bottom Container" as="header-bottom-container" htmlTag="div" htmlClass="container" />
+			</container>
+		</referenceContainer>
+        <!--move element="catalog.topnav" destination="header-bottom-container" before="-" /-->
+        <move element="logo" destination="header-top-container" before="-" />
+		<move element="top.search" destination="header-top-container" after="logo" />
+        <referenceContainer name="columns" htmlTag="div" htmlClass="columns container" />
+        <referenceContainer name="footer-container">
+	        <block name="footer.menu" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/footer/footermenu.phtml" before="-" />
+	        <block name="footer.social" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/footer/footersocial.phtml" after="footer.menu" />
+        </referenceContainer>
+        <referenceBlock name="form.subscribe" remove="true" /> 
+        <referenceBlock name="store_switcher" remove="true" />
+        <!--referenceContainer name="page.messages" remove="true" /-->
+    </body>
+</page>

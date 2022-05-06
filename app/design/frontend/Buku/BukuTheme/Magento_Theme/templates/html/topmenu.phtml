@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<div id="nav-toggle">
+	<div class="hamburger-box">
+		<div class="hamburger-inner"></div>
+	</div>
+</div>
+<nav class="navigation" role="navigation">
+    <ul>
+	    <li role="presentation" class="level0"><a href="<?php echo $this->getUrl('') ?>" rel="home">Home</a></li>
+        <?php /* @escapeNotVerified */ echo $_menu; ?>
+        <li class="level0"><a href="<?php echo $this->getUrl("sell") ?>">LCD Buyback</a></li>
+        <li class="search-toggle level0" role="presentation"><a href="#"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</a></li>
+    </ul>
+</nav>

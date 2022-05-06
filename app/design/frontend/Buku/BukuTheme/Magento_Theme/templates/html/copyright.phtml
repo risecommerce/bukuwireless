@@ -1,0 +1,15 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<div class="container-fluid payment-icons">
+	<div class="row">
+		<div class="col-xs-3"><img src='<?php echo $this->getViewFileUrl('images/ax.png'); ?>' alt="American Express" /></div>
+		<div class="col-xs-3"><img src='<?php echo $this->getViewFileUrl('images/pp.png'); ?>' alt="PayPal" /></div>
+		<div class="col-xs-3"><img src='<?php echo $this->getViewFileUrl('images/mc.png'); ?>' alt="Mastercard" /></div>
+		<div class="col-xs-3"><img src='<?php echo $this->getViewFileUrl('images/disc.png'); ?>' alt="Discover Card" /></div>
+	</div>
+</div>
+<p class="copyright text-center white"><?php /* @escapeNotVerified */ echo $block->getCopyright() ?></p>

@@ -1,0 +1,174 @@
+<?php 
+    $getCategoryListing = $block->getCategoryListing();
+    $getFirstLevelCategories = $block->getFirstLevelCategories();
+    if($block->getProduct()){
+    	$product_category = $block->getProductCategory();
+    	// echo $product_category->getName();
+    	// echo $product_category->getParentCategory()->getName();
+
+    }
+    
+?>
+<div class="accordion_container hello"><h3>All Categories</h3>
+	<?php foreach ($getFirstLevelCategories->getChildrenCategories() as $_category) { ?>
+		<?php 
+			if($_category->getChildrenCategories()){
+				$cat = $_category->getName();
+			}else{
+				$cat = "dd<a href='".$_category->getUrl()."'>".$_category->getName()."</a>";	
+			}
+		?>
+		<?php if($this->getCurrentCategory()){
+			 if($_category->getName() == $this->getCurrentCategory()->getName() || $_category->getName() == $this->getCurrentCategory()->getParentCategory()->getName() || $_category->getName() == $this->getCurrentCategory()->getParentCategory()->getParentCategory()->getName()){ ?>
+				<div class="accordion_head active"><?= $cat;  ?><span class="plusminus"></span></div>
+			<?php }else{ ?>
+			   	
+			   		<div class="accordion_head"><?= $cat; ?><span class="plusminus"></span></div>
+			<?php } 
+		}else{ ?>
+			<?php if($block->getProduct()){ 
+			   		if($_category->getName() == $product_category->getName() || $_category->getName() == $product_category->getParentCategory()->getName()){ ?>
+			   			<div class="accordion_head active"><?= $cat; ?><span class="plusminus"></span></div>
+			   		<?php }else{ ?>
+			   			<div class="accordion_head"><?= $cat; ?><span class="plusminus"></span></div>
+			   		<?php } ?>
+
+			   	<?php }else{ ?>
+				<div class="accordion_head"><?= $cat; ?></div>
+			<?php } ?>
+		<?php }?>
+		
+		<?php if(count($_category->getChildrenCategories())) { ?>
+			<?php if($this->getCurrentCategory()){
+			if($_category->getId() == $this->getCurrentCategory()->getId() || $_category->getId() == $this->getCurrentCategory()->getParentCategory()->getId() || $_category->getId() == $this->getCurrentCategory()->getParentCategory()->getParentCategory()->getId()){ ?>
+				<div class="accordion_body" id="<?= 'cat_'.$_category->getId(); ?>">
+			<?php }else{ ?>
+				<div class="accordion_body" id="<?= 'cat_'.$_category->getId(); ?>" style="display: none;">
+			<?php } 
+			}else{ ?>
+
+				<?php if($block->getProduct()){ 
+			   		if($_category->getName() == $product_category->getName() || $_category->getName() == $product_category->getParentCategory()->getName()){ ?>
+			   			<div class="accordion_body" id="<?= 'cat_'.$_category->getId(); ?>">
+			   		<?php }else{ ?>
+			   			<div class="accordion_body" id="<?= 'cat_'.$_category->getId(); ?>" style="display: none;">
+			   		<?php } ?>
+
+				   	<?php }else{ ?>
+					<div class="accordion_body" id="<?= 'cat_'.$_category->getId(); ?>" style="display: none;">
+				<?php } ?>
+
+				
+			<?php } ?>
+                <?php foreach ($_category->getChildrenCategories() as $_categorySub) { ?>
+                	<?php 
+
+						if($_categorySub->getChildrenCategories()){
+							$cat2 = $_categorySub->getName();
+						}else{
+							$cat2 = "<div class=''><a href='".$_categorySub->getUrl()."'>".$_categorySub->getName()."</a></div>";	
+						}
+					?>
+                	<?php if($this->getCurrentCategory()){
+						 if($_categorySub->getName() == $this->getCurrentCategory()->getName() || $_categorySub->getName() == $this->getCurrentCategory()->getParentCategory()->getName() || $_categorySub->getName() == $this->getCurrentCategory()->getParentCategory()->getParentCategory()->getName()){ ?>
+							<div class="accordion_head_2 active"><?= $cat2; ?><span class="plusminus"></span></div>
+						<?php }else{ ?>
+							<div class="accordion_head_2"><?= $cat2; ?><span class="plusminus"></span></div>
+						<?php } 
+					}else{ ?>
+						<?php if($block->getProduct()){ 
+						   		if($_categorySub->getName() == $product_category->getName() || $_categorySub->getName() == $product_category->getParentCategory()->getName()){ ?>
+						   			<div class="accordion_head_2 active"><span class="plusminus"></span><?= $cat2; ?></div>
+						   		<?php }else{ ?>
+						   			<div class="accordion_head_2"><span class="plusminus"></span><?= $cat2; ?></div>
+						   		<?php } ?>
+
+						   	<?php }else{ ?>
+							<div class="accordion_head_2"><?= $cat2; ?><span class="plusminus"></span></div>
+						<?php } ?>
+					<?php }?>
+					<?php if($this->getCurrentCategory()){
+					if($_categorySub->getId() == $this->getCurrentCategory()->getId() || $_categorySub->getId() == $this->getCurrentCategory()->getParentCategory()->getId() || $_categorySub->getId() == $this->getCurrentCategory()->getParentCategory()->getParentCategory()->getId()){ ?>
+						<div class="accordion_body_2" id="<?= 'cat_'.$_categorySub->getId(); ?>">
+					<?php }else{ ?>
+						<div class="accordion_body_2" id="<?= 'cat_'.$_categorySub->getId(); ?>" style="display: none;">
+					<?php } 
+					}else{ ?>
+						<?php if($block->getProduct()){ 
+						   		if($_categorySub->getName() == $product_category->getName() || $_categorySub->getName() == $product_category->getParentCategory()->getName()){ ?>
+						   			<div class="accordion_body_2" id="<?= 'cat_'.$_categorySub->getId(); ?>">
+						   		<?php }else{ ?>
+						   			<div class="accordion_body_2" id="<?= 'cat_'.$_categorySub->getId(); ?>" style="display: none;">
+						   		<?php } ?>
+
+						   	<?php }else{ ?>
+							<div class="accordion_body_2" id="<?= 'cat_'.$_categorySub->getId(); ?>" style="display: none;">
+						<?php } ?>
+						
+					<?php } ?>
+	                
+	                <?php foreach ($_categorySub->getChildrenCategories() as $sub_sub_cat) { ?>
+	                	<?php if($this->getCurrentCategory()){
+			                	if($sub_sub_cat->getId() == $this->getCurrentCategory()->getId() || $sub_sub_cat->getId() == $this->getCurrentCategory()->getParentCategory()->getId() || $sub_sub_cat->getId() == $this->getCurrentCategory()->getParentCategory()->getParentCategory()->getId()){ ?>
+			                    	<a href="<?= $sub_sub_cat->getUrl() ?>" class="active"><?= $sub_sub_cat->getName(); ?></a>
+			                    <?php }else{ ?>
+			                    	<div class=""><a href="<?= $sub_sub_cat->getUrl() ?>"><?= $sub_sub_cat->getName(); ?></a></div>
+			                    <?php }
+	                		}else{ ?>
+	                			<?php if($block->getProduct()){ 
+								   		if($sub_sub_cat->getName() == $product_category->getName() || $sub_sub_cat->getName() == $product_category->getParentCategory()->getName() || $sub_sub_cat->getName() == $product_category->getParentCategory()->getParentCategory()->getName() ){ ?>
+								   			<a href="<?= $sub_sub_cat->getUrl() ?>" class="active"><?= $sub_sub_cat->getName(); ?></a>
+								   		<?php }else{ ?>
+								   		<div class="">	<a href="<?= $sub_sub_cat->getUrl() ?>"><?= $sub_sub_cat->getName(); ?></a></div>
+								   		<?php } ?>
+
+								   	<?php }else{ ?>
+									<div class=""><a href="<?= $sub_sub_cat->getUrl() ?>"><?= $sub_sub_cat->getName(); ?></a></div>
+								<?php } ?>
+	                			
+	                	<?php } ?>
+	                <?php } ?>
+	            </div>
+                <?php } ?>
+            </div>
+        <?php } ?>
+	<?php } ?>
+</div>
+
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $(document).ready(function() {
+        	$(".accordion_head").click(function() {
+		        if ($('.accordion_body').is(':visible')) {
+					 
+		            $(".accordion_body").slideUp(300);
+					$(this).toggleClass('plus');
+		            $(".plusminus").text('+');
+		        }
+		        if ($(this).next(".accordion_body").is(':visible')) {
+		            $(this).next(".accordion_body").slideUp(300);
+		            $(this).children(".plusminus").text('+');
+		        } else {
+		            $(this).next(".accordion_body").slideDown(300);
+		            $(this).children(".plusminus").text('-');
+		        }
+		    });
+
+		    $(".accordion_head_2").click(function() {
+		        if ($('.accordion_body_2').is(':visible')) {
+		            $(".accordion_body_2").slideUp(300);
+		            $(".plusminus").text('+');
+		        }
+		        if ($(this).next(".accordion_body_2").is(':visible')) {
+		            $(this).next(".accordion_body_2").slideUp(300);
+		            $(this).children(".plusminus").text('+');
+		        } else {
+		            $(this).next(".accordion_body_2").slideDown(300);
+		            $(this).children(".plusminus").text('-');
+		        }
+		    });
+		});
+    });
+</script>

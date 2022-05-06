@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="empty"/>
+    <referenceContainer name="page.wrapper">
+        <container name="header.container" as="header_container" label="Page Header Container"  htmlTag="header" htmlClass="page-header" before="main.content"/>
+        <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
+        <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer" />
+    </referenceContainer>
+    <referenceContainer name="page.wrapper">
+        <container name="main.content" htmlTag="main" htmlId="maincontent" htmlClass="page-main">
+			<block class="Magestore\Bannerslider\Block\SliderItem">
+			  <action method="setSliderId">
+			    <argument name="sliderId" xsi:type="string">1</argument>
+			  </action>
+			</block>
+			<!--container name="homepage.slider" label="Main Homepage Slider" htmlTag="div" htmlClass="homepage-slider"/-->
+			<container name="main" label="Main Content Container" htmlTag="div" htmlClass="column main"/>
+            <!--container name="home-vector-wrap" htmlTag="div" htmlClass="home-vector-wrap">
+				<block name="home-columns-background" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/herovector.phtml" />
+            </container>
+            <container name="columns" htmlTag="div" htmlClass="columns">
+	            <container name="home-columns-left" htmlTag="div" htmlClass="col-lg-5">
+                	<container name="main" label="Main Content Container" htmlTag="div" htmlClass="column main"/>
+	            </container>
+            </container-->
+        </container>
+        <container name="wholesale-banner-wrap" htmlTag="div" htmlClass="wholesale-banner">
+	        <container name="wholesale-container" htmlTag="div" htmlClass="container">
+		        <container name="wholesale-home-row" htmlTag="div" htmlClass="row row-flex">
+			        <container name="wholesale-home-img" htmlTag="div" htmlClass="col-xs-12 col-sm-4 col-md-6 col-lg-4 wholesale-banner-img">
+				       <block class="Magento\Cms\Block\Block" name="wholesale-banner-img">
+				            <arguments>
+				                <argument name="block_id" xsi:type="string">wholesale-banner-img</argument>
+				            </arguments>
+				        </block>
+			        </container>
+			        <container name="wholesale-content" htmlTag="div" htmlClass="col-xs-12 col-sm-8 col-md-6 wholesale-banner-text pull-right">
+				       <block class="Magento\Cms\Block\Block" name="wholesale-banner">
+				            <arguments>
+				                <argument name="block_id" xsi:type="string">wholesale-banner</argument>
+				            </arguments>
+				        </block>
+				        <block name="homepage-wholesale-links" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/wholesalelinks.phtml" />
+			        </container>
+		        </container>
+	        </container>
+        </container>
+        <container name="featured.carousel" htmlTag="div" htmlId="featured-products">
+	        <block class="Solwin\FeaturedPro\Block\FeaturedList" name="featured_data" template="featured_list.phtml" ifconfig="featuredpro_settings/featured_products/enable"/>
+        </container>
+        <container name="wholesale-block-container" htmlTag="div" htmlId="wholesale-block">
+	        <container name="wholesale-apply-wrapper" htmlTag="div" htmlClass="wholesale-apply-wrapper">
+		        <container name="wholesale-apply-wrapper-container" htmlTag="div" htmlClass="container">
+			       <block class="Magento\Cms\Block\Block" name="wholesale-apply">
+			            <arguments>
+			                <argument name="block_id" xsi:type="string">wholesale-application-block</argument>
+			            </arguments>
+			        </block>
+		        </container>
+	        </container>
+        </container>
+    </referenceContainer>
+    <referenceBlock name="page.main.title" remove="true" />
+</layout>

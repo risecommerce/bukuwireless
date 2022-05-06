@@ -1,0 +1,129 @@
+@product-item-border: 1px solid #f6f6f6;
+@theme-blue: #1b4485;
+
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common =true) {
+	.page-products {
+		.products-grid { 
+			.product-item {
+				border-right: @product-item-border;
+				text-align: center;
+				padding: 0 10px !important;
+				
+				&:nth-child(4n + 1) {
+					border-left: @product-item-border;
+				}
+				.product-item-actions {
+					.actions-secondary {
+						display: none;
+					}
+				}
+				.tocart {
+					width: 100%;
+				}
+			}
+		}
+		.block.block-compare {
+			display: none;
+		}
+	}
+	.catalog-product-view {
+		.product-info-main {
+			.page-title-wrapper {
+				.page-title {
+					font-size: 20px;
+					font-weight: 600;
+				}
+			} 
+			.stock.available {
+				color: @theme-blue;
+			}
+			.product-addto-links {
+				display: none;
+			}
+			.price-box {
+				margin-top: 50px;
+				.price-wrapper {
+					.price {
+						font-size: 5.8rem;
+						font-weight: 700;
+						color: @theme-blue;
+					}
+				}
+			} 
+			.qty-box {
+				margin-bottom:0;
+				a.qtyplus, a.qtyminus {
+					height: 52px;
+					line-height: 3;
+				}
+			}
+			.box-tocart {
+				.action.tocart {
+					min-width: 240px;
+				}
+			} 
+			.product.data.items {
+				> .item.title {
+					&.active {
+						 > .switch {
+							color: @theme-blue;
+							border-bottom: 3px solid  @theme-blue;
+							padding-bottom: 30px;
+						 }
+					}
+					> .switch {
+						background: @color-white;
+					    border: 0;
+						//color: @color-black;
+						font-size: 20px;
+						padding: 0;
+						margin-right: 20px;
+						text-transform: uppercase;
+						&:hover {
+							color: @theme-blue;
+						}
+					}
+				} 
+				> .item.content {
+					background: #f5f5f5;
+					border-top: 0;
+				}
+			}
+		}
+	}
+
+}
+
+
+//  
+//  Mobile  
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__m) {
+
+}
+
+
+//  
+//  desktop  
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+	.page-layout-1column 
+	{
+		.product.media {
+			width: 50%;
+		}
+		.product-info-main {
+			width: 47%;
+		}
+		.sidebar-main {
+			padding-right: 0;
+		}
+	}
+}

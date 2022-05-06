@@ -1,0 +1,61 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<div class="block block-dashboard-orders">
+<?php $_orders = $block->getOrders(); ?>
+    <div class="block-title order">
+        <h3><?php /* @escapeNotVerified */ echo __('Recent Orders') ?></h3>
+        <?php if (sizeof($_orders->getItems()) > 0): ?>
+            <a class="action view" href="<?php /* @escapeNotVerified */ echo $block->getUrl('sales/order/history') ?>">
+                <span><?php /* @escapeNotVerified */ echo __('View All') ?></span> <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </a>
+        <?php endif; ?>
+    </div>
+    <div class="block-content">
+    <?php echo $block->getChildHtml()?>
+    <?php if (sizeof($_orders->getItems()) > 0): ?>
+        <div class="table-wrapper orders-recent">
+            <table class="data table table-order-items recent" id="my-orders-table">
+                <thead>
+                    <tr class="row">
+                        <th scope="col" class="col id col-xs-12 col-sm-3"><?php /* @escapeNotVerified */ echo __('Order #') ?></th>
+                        <th scope="col" class="col date col-xs-12 col-sm-2"><?php /* @escapeNotVerified */ echo __('Date') ?></th>
+                        <th scope="col" class="col shipping col-xs-12 col-sm-3"><?php /* @escapeNotVerified */ echo __('Ship To') ?></th>
+                        <th scope="col" class="col total col-xs-12 col-sm-2"><?php /* @escapeNotVerified */ echo __('Order Total') ?></th>
+                        <th scope="col" class="col status col-xs-12 col-sm-2"><?php /* @escapeNotVerified */ echo __('Status') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($_orders as $_order): ?>
+                        <tr class="row">
+                            <td data-th="<?php echo $block->escapeHtml(__('Order #')) ?>" class="col id col-xs-12 col-sm-3"><?php /* @escapeNotVerified */ echo $_order->getRealOrderId() ?></td>
+                            <td data-th="<?php echo $block->escapeHtml(__('Date')) ?>" class="col date col-xs-12 col-sm-2"><?php /* @escapeNotVerified */ echo $block->formatDate($_order->getCreatedAt()) ?></td>
+                            <td data-th="<?php echo $block->escapeHtml(__('Ship To')) ?>" class="col shipping col-xs-12 col-sm-3"><?php echo $_order->getShippingAddress() ? $block->escapeHtml($_order->getShippingAddress()->getName()) : '&nbsp;' ?></td>
+                            <td data-th="<?php echo $block->escapeHtml(__('Order Total')) ?>" class="col total col-xs-12 col-sm-2"><?php /* @escapeNotVerified */ echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
+                            <td data-th="<?php echo $block->escapeHtml(__('Status')) ?>" class="col status status col-xs-12 col-sm-2"><?php /* @escapeNotVerified */ echo $_order->getStatusLabel() ?></td>
+                            <td data-th="<?php echo $block->escapeHtml(__('Actions')) ?>" class="col actions col-xs-12 col-lg-4">
+                                <a href="<?php /* @escapeNotVerified */ echo $block->getViewUrl($_order) ?>" class="action view">
+                                    <span><?php /* @escapeNotVerified */ echo __('View Order') ?></span>
+                                </a>
+                                <?php if ($this->helper('Magento\Sales\Helper\Reorder')->canReorder($_order->getEntityId())) : ?>
+                                    <a href="<?php /* @escapeNotVerified */ echo $block->getReorderUrl($_order) ?>" class="action order cta">
+                                        <span><?php /* @escapeNotVerified */ echo __('Reorder') ?></span>
+                                    </a>
+                                <?php endif ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php else: ?>
+        <div class="message info empty"><span><?php /* @escapeNotVerified */ echo __('You have placed no orders.'); ?></span></div>
+    <?php endif; ?>
+    </div>
+</div>

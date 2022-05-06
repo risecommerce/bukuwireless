@@ -1,0 +1,20 @@
+<?php if ($this->getFormId()): ?>
+	<div data-form="true">
+		<h2><?php echo $this->getFormName() ?></h2>
+		<div class="form-errors">
+			<div data-errors="true"></div>
+		</div>
+		<form class="form-<?php echo $this->getFormId() ?>" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="form_id" value="<?php echo $this->getFormId() ?>" />
+			<?php echo $this->getForm()->toHtml() ?>
+		</form>
+	</div>
+<?php if($this->getFormId() == 2){ ?>
+	<script type="text/javascript">
+	require(["jquery"], function($){
+		var productTitle = $("[data-ui-id=page-title-wrapper]").html();
+		$("#product_name").val(productTitle).attr("readonly", true);
+	});		
+	</script>
+<?php } ?>
+<?php endif ?>

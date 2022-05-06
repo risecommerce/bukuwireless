@@ -1,0 +1,27 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+	    <referenceBlock name="product.info.addtocart" remove="true" />
+	    <referenceBlock name="product.info.addto" remove="true" />
+	    <referenceBlock name="product.info.mailto" remove="true" />
+	    <referenceBlock name="reviews.tab" remove="true" />
+	    <referenceBlock name="product.info.media.image" remove="true" />
+	    <referenceContainer name="product.info.stock.sku" remove="true" />
+	    <referenceContainer name="product.info.main">
+		    <container name="buyback-form-title-wrap" htmlTag="div" htmlClass="title-wrap">
+				<block class="Magento\Cms\Block\Block" name="buyback-form-title">
+				    <arguments>
+				        <argument name="block_id" xsi:type="string">buyback-get-a-quote-title</argument>
+				    </arguments>
+				</block>
+		    </container>
+			<block class="Magento\Cms\Block\Block" name="buyback-form-block">
+			    <arguments>
+			        <argument name="block_id" xsi:type="string">sell-product-form-block</argument>
+			    </arguments>
+			</block>
+	    </referenceContainer>
+	    <referenceContainer name="product.info.media">
+		    <block class="Magento\Catalog\Block\Product\View\Gallery" name="buyback.product.image" template="product/view/sellimage.phtml"/>
+	    </referenceContainer>
+    </body>
+</page>

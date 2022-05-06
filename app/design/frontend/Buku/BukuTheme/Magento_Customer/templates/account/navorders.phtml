@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/** @var $block \Magento\Framework\View\Element\Html\Links */
+?>
+<?php /** @var $block \Magento\Customer\Block\Account\Navigation */ ?>
+<div class="block account-nav orders">
+	<div class="emblem">
+		<img src='<?php echo $this->getViewFileUrl('images/Orders.svg'); ?>' class="orders-icon" />
+	</div>
+    <h2 class="title text-center">
+        <strong><?php /* @escapeNotVerified */ echo __('Your Orders'); ?></strong>
+    </h2>
+    <div class="content">
+        <nav class="account-nav">
+            <ul class="nav items">
+                <?php echo $block->getChildHtml();?>
+            </ul>
+        </nav>
+    </div>
+</div>

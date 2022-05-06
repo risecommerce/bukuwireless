@@ -1,0 +1,21 @@
+<div style="padding:10px">
+	<?php $submissions = $block->getSubmissions() ?>
+	<?php if ($submissions): ?>
+		<?php foreach($submissions as $submission): ?>
+			<div class="admin__field-control control" style="margin-bottom:10px">
+				<table class="admin__control-table">
+					<tbody>
+						<?php foreach ($submission as $data): ?>
+							<tr>
+								<td width="200"><?php echo $data['field'] ?></td>
+								<td><?php echo $data['value'] ?></td>
+							</tr>
+						<?php endforeach?>
+					</tbody>
+				</table>
+			</div>
+		<?php endforeach ?>
+	<?php else: ?>
+		<?php echo __('No submissions yet.') ?>
+	<?php endif ?>
+</div>

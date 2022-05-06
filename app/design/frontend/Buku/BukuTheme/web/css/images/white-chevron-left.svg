@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="27px" viewBox="0 0 18 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Tablet-Portrait" transform="translate(-350.000000, -1269.000000)" fill="#F3F8FE">
+            <g id="Categories-Copy" transform="translate(0.000000, 795.000000)">
+                <g id="Arrows" transform="translate(339.000000, 467.000000)">
+                    <g id="Chevron-Left">
+                        <path d="M28.02567,11.603795 L19.136161,20.493304 L28.02567,29.382813 C28.237723,29.594866 28.34375,29.845982 28.34375,30.136161 C28.34375,30.426339 28.237723,30.677455 28.02567,30.889509 L25.246652,33.668527 C25.034598,33.88058 24.783482,33.986607 24.493304,33.986607 C24.203125,33.986607 23.952009,33.88058 23.739955,33.668527 L11.31808,21.246652 C11.106027,21.034598 11,20.783482 11,20.493304 C11,20.203125 11.106027,19.952009 11.31808,19.739955 L23.739955,7.31808 C23.952009,7.106027 24.203125,7 24.493304,7 C24.783482,7 25.034598,7.106027 25.246652,7.31808 L28.02567,10.097098 C28.237723,10.309152 28.34375,10.560268 28.34375,10.850446 C28.34375,11.140625 28.237723,11.391741 28.02567,11.603795 L28.02567,11.603795 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="19px" viewBox="0 0 20 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>message-success</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M9.14629862,17.6240682 L1.29284818,9.29286475 L5.90614806,4.3972311 L8.92145546,7.59637913 L13.7505646,1.96059638 L2.00752823,1.96059638 C0.900376412,1.96059638 0,2.91693291 0,4.09052183 L0,16.8700745 C0,18.0447284 0.900376412,19 2.00752823,19 L16.0602258,19 C17.1673777,19 18.0677541,18.0447284 18.0677541,16.8700745 L18.0677541,7.21192758 L9.14629862,17.6240682 Z M9.0770389,14.5388711 L4.1314931,9.29286475 L5.90614806,7.40894569 L8.99071518,10.6826411 L18.1430364,0 L20,1.79126731 L9.0770389,14.5388711 Z" id="message-success" fill="#17181a"></path>
+    </g>
+</svg>

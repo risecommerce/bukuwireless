@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<div id="wholesale-block">
+	<div class="wholesale-apply-wrapper">
+<div class="container">
+	<button class="close"><i aria-hidden="true" class="fa fa-times fa-2x"></i></button>
+<form class="form contact"
+      action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+      id="wholesale-apply-form"
+      method="post"
+      data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+	    <legend class="legend text-center white"><h2><span><?php /* @escapeNotVerified */ echo __('Apply to Be a Wholesaler') ?></span></h2></legend>
+	    <div class="row row-flex">
+	        <div class="field first-name required col-xs-12 col-sm-6">
+	            <label class="label white" for="first-name"><span><?php /* @escapeNotVerified */ echo __('First Name') ?></span></label>
+	            <div class="control">
+	                <input name="first-name" id="first-name" title="<?php /* @escapeNotVerified */ echo __('First Name') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+	            </div>
+	        </div>
+	        <div class="field last-name required col-xs-12 col-sm-6">
+	            <label class="label white" for="last-name"><span><?php /* @escapeNotVerified */ echo __('Last Name') ?></span></label>
+	            <div class="control">
+	                <input name="last-name" id="last-name" title="<?php /* @escapeNotVerified */ echo __('Last Name') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+	            </div>
+	        </div>
+	        <div class="field company required col-xs-12 col-sm-6">
+	            <label class="label white" for="company"><span><?php /* @escapeNotVerified */ echo __('Company') ?></span></label>
+	            <div class="control">
+	                <input name="company" id="company" title="<?php /* @escapeNotVerified */ echo __('Company') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+	            </div>
+	        </div>
+	        <div class="field email required col-xs-12 col-sm-6">
+	            <label class="label white" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+	            <div class="control">
+	                <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+	            </div>
+	        </div>
+	        <div class="field telephone col-xs-12 col-sm-6">
+	            <label class="label white" for="telephone"><span><?php /* @escapeNotVerified */ echo __('Phone Number') ?></span></label>
+	            <div class="control">
+	                <input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="" class="input-text" type="text" />
+	            </div>
+	        </div>
+	    </div>
+        <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('APPLY') ?>" class="action submit primary cta">
+                <span><?php /* @escapeNotVerified */ echo __('APPLY') ?></span>
+            </button>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+</div>

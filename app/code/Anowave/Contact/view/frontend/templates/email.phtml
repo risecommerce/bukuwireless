@@ -1,0 +1,15 @@
+<?php 
+/**
+ * Display form content
+ */
+?>
+<table width="100%" cellspacing="5" cellpadding="5">
+	<tbody>
+		<?php foreach ($this->getMessage() as $message):?>
+			<tr>
+				<td><?php echo $message->label ?></td>
+				<td><?php echo $message->value ?></td>
+			</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>

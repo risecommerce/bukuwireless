@@ -1,0 +1,66 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+	<body>
+		<!-- 	<referenceBlock name="catalog.topnav" remove="true" />
+        <referenceContainer name="header.panel" remove="true" />
+        <referenceBlock name="header" remove="true" /> -->
+		<referenceBlock name="logo">
+			<arguments>
+				<argument name="logo_img_width" xsi:type="number">426</argument>
+				<argument name="logo_img_height" xsi:type="number">245</argument>
+			</arguments>
+		</referenceBlock>
+		<referenceBlock name="report.bugs" remove="true" />
+		<referenceContainer name="content">
+			<block class="Magento\Cms\Block\Block" name="customaccountlink">
+				<arguments>
+					<argument name="block_id" xsi:type="string">custom_accountlink</argument>
+				</arguments>
+			</block>
+			<block class="Magento\Cms\Block\Block" name="Headercontact">
+				<arguments>
+					<argument name="block_id" xsi:type="string">Headercontact</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+		<referenceContainer name="services">
+			<block class="Magento\Cms\Block\Block" name="serviceheader">
+				<arguments>
+					<argument name="block_id" xsi:type="string">serviceheader</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+		<referenceContainer name="slider">
+			<block class="Magento\Cms\Block\Block" name="Sliderheader" before="-">
+				<arguments>
+					<argument name="block_id" xsi:type="string">Sliderheader</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+		<referenceContainer name="footer">
+			<block class="Magento\Cms\Block\Block" name="Footer-bottm" before="-">
+				<arguments>
+					<argument name="block_id" xsi:type="string">Footer-bottm</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+		<move element="Headercontact" destination="header.panel" after="-" />
+		<move element="timerheader" destination="header.panel" before="-" />
+		<move element="customaccountlink" destination="header-wrapper" before="serviceheader" />
+		<move element="serviceheader" destination="header-wrapper" after="block.search" />
+		<!-- <move element="my-account-link" destination="header-wrapper" before="serviceheader"/> 
+		<move element="top.links" destination="header.wrapper" before="block.search" /> -->
+		<referenceBlock name="footer_links" remove="true" />
+		<referenceBlock name="form.subscribe" remove="true" />
+		<referenceBlock name="register-link" remove="true" />
+		<referenceBlock name="wish-list-link" remove="true" />
+		<!--  <referenceBlock name="authorization-link" remove="true" /> -->
+		<referenceBlock name="currency" remove="true" />
+		<referenceBlock name="serviceheader" remove="true" />
+		<!-- 	<block class="Magento\Cms\Block\Block" name="timerheader">
+        <arguments>
+            <argument name="block_id" xsi:type="string">timerheader</argument>
+        </arguments> 
+    </block>  -->
+	</body>
+</page>

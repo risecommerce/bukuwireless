@@ -1,0 +1,96 @@
+<?php
+$categories = $this->getStoreCategories(true,false,true);
+$categoryHelper = $this->getCategoryHelper();
+?>
+<div id="nav-toggle">
+	<div class="hamburger-box">
+		<div class="hamburger-inner"></div>
+	</div>
+</div>
+
+<nav class="navigation" role="navigation">
+<ul>
+	<li class="mobile-menu level0"><a href="tel:8444213563"><i aria-hidden="true" class="fa fa-phone"></i> (844) 421-3563</a></li>
+	
+	<li class="level0"><a href="<?php echo $this->getUrl('') ?>" rel="home"><span>Home</span></a></li>
+	<li class="mobile-menu level0"><a href=<?php echo $this->getUrl("wholesale") ?>>Wholesale</a></li>
+	<?php // Level 0
+	foreach($categories as $category):
+	     if (!$category->getIsActive()) {
+	        continue;
+	     }
+	
+	?>
+	<li id="category-<?php echo str_replace(" ","-",strtolower($category->getName())) ?>" class="level0 parent level-top">
+		<a href="<?php echo $categoryHelper->getCategoryUrl($category) ?>"><span><?php echo $category->getName() ?></span></a>
+		<?php  
+		if($childrenCategories = $this->getChildCategories($category)): // Level 1
+		?>
+		<div class="submenu-wrap">
+			<div class="container">
+				<div class="row">
+					<ul class="level0 submenu">
+						<?php
+						foreach($childrenCategories as $childrenCategory):
+						     if (!$childrenCategory->getIsActive()) {
+						        continue;
+						     }
+						?>
+						<li class="level1 col-lg-3 col-xs-12">
+						<div class="submenu-box">
+							<a href="<?php echo $categoryHelper->getCategoryUrl($childrenCategory) ?>"><span><?php echo $childrenCategory->getName() ?></span></a>
+							<?php if($childrenCategories2 = $this->getChildCategories($childrenCategory)): // Level 2 ?>
+							
+								
+									<ul class="level1 submenu">
+										<?php foreach($childrenCategories2 as $childrenCategory2):
+										     if (!$childrenCategory2->getIsActive()) {
+										        continue;
+										     }
+										?>
+										<li class="level2">
+											<?php
+											    $catId2 = $childrenCategory2->getId();
+											    $categoryAgain2 = $this->getCategoryView()->load($catId2);
+											?>
+											<a href="<?php echo $categoryHelper->getCategoryUrl($childrenCategory2) ?>" <?php if ($_imgUrl2 = $categoryAgain2->getImageUrl()) { echo 'data-category-img="'.$_imgUrl2.'"'; } ?>><span><?php echo $childrenCategory2->getName() ?></span></a>
+										</li>
+										<?php endforeach; // Level 2 foreach ?>
+									</ul>
+							
+							
+							<?php
+								endif; // Level 2 if
+							?>
+							<a href="<?php echo $categoryHelper->getCategoryUrl($childrenCategory) ?>" class="menu-image-wrapper">
+							<?php
+							    $catId = $childrenCategory->getId();
+							    $categoryAgain = $this->getCategoryView()->load($catId);
+							    $_outputhelper = $this->helper('Magento\Catalog\Helper\Output');
+							    $_imgHtml   = '';
+							    if ($_imgUrl = $categoryAgain->getImageUrl()) {
+							        $_imgHtml = '<img src="' . $_imgUrl . '" />';
+							        $_imgHtml = $_outputhelper->categoryAttribute($categoryAgain, $_imgHtml, 'image');
+							        /* @escapeNotVerified */ 
+							        echo $_imgHtml;
+							    }
+							?>
+							</a>
+						</div>
+						</li>
+					<?php
+					endforeach; // Level 1 foreach
+					?>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<?php endif; // Level 1 if ?>
+	</li>
+<?php
+endforeach; // Level 0 foreach
+?>
+<!--li class="level0"><a href="<?php echo $this->getUrl("we-buy-phones.html") ?>">We Buy Phones</a></li-->
+<li class="search-toggle level0"><a href="#"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</a></li>
+</ul>
+</nav>

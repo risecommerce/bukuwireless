@@ -1,0 +1,16 @@
+
+<?php
+	$url = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+	$facebook = 'http://www.facebook.com/sharer.php?u='.$url;
+	$twitter = 'https://twitter.com/share?url='.$url;
+	$gplus = 'https://plus.google.com/share?url='.$url;
+	$pin = 'https://pinterest.com/pin/create/bookmarklet/?url='.$url;
+?>
+
+<div class="h4 text-center font-light"><em>Share This!</em></div>
+<ul class="text-center">
+	<li><a class="fb" target="_blank" href="<?php echo $facebook ?>" title="Share on Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+	<li><a class="tw" target="_blank" href="<?php echo $twitter ?>" title="Share on Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+	<li><a class="gp" target="_blank" href="<?php echo $gplus ?>" title="Share on Google+"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+	<li><a class="pin" target="_blank" href="<?php echo $pin ?>" title="Share on Pinterest"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+</ul>

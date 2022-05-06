@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="empty"/>
+    <referenceContainer name="catalog.row.wrapper" remove="true" />
+    <referenceContainer name="page.wrapper">
+        <container name="header.container" as="header_container" label="Page Header Container"  htmlTag="header" htmlClass="page-header" before="main.content"/>
+        <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
+        <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer" />
+    </referenceContainer>
+    <referenceContainer name="page.wrapper">
+	    <container name="columns.top" label="Before Main Columns" after="page.top" />
+        <container name="main.content" htmlTag="main" htmlId="maincontent" htmlClass="page-main sell-hero not-fullscreen background parallax">
+	        <container name="columns" htmlTag="div" htmlId="sell-main" htmlClass="columns container-fluid">
+		        <container name="main" label="Main Content Container" htmlTag="div" htmlClass="column main"/>
+	        </container>
+        </container>
+        <container name="buyback.products">
+	        <container name="buyback.products-title-wrap" htmlTag="div" htmlClass="text-center white title-wrap">
+				<block class="Magento\Cms\Block\Block" name="buyback.products-title-block">
+				    <arguments>
+				        <argument name="block_id" xsi:type="string">buyback-list-title</argument>
+				    </arguments>
+				</block>
+	        </container>
+	        <container name="buyback.products.container" htmlTag="div" htmlClass="container">
+		        <block class="Ibnab\CategoriesSide\Block\CategorisCollection" name="categoriecollection.buyback" template="Ibnab_CategoriesSide::categorycollect.phtml"/>
+	            <!--block class="Magento\Catalog\Block\Category\View" name="buyback.products.view" template="Magento_Catalog::category/products.phtml">
+	                <block class="Magento\Catalog\Block\Product\ListProduct" name="buyback.products.list" as="product_list" template="Magento_Catalog::product/buybacklist.phtml" />
+	            </block-->
+	            <!--block class="Magento\Catalog\Block\Navigation" name="buyback.leftnav" before="-" template="Magento_Catalog::navigation/buybackcats.phtml"/-->
+	            <!--block class="Buku\Custom\Block\CategoryCollect" name="buyback.categories" template="Buku_Custom::categorycollect.phtml" /-->
+	        </container>
+        </container>
+        <container name="sell.how.it.works" htmlTag="div" htmlId="how-selling-works">
+	        <container name="how-selling-works-title-wrap" htmlTag="div" htmlClass="text-center white title-wrap">
+				<block class="Magento\Cms\Block\Block" name="how-selling-works-title-block">
+				    <arguments>
+				        <argument name="block_id" xsi:type="string">how-selling-works-title</argument>
+				    </arguments>
+				</block>
+	        </container>
+	        <container name="sell.how.it.works.container" htmlTag="div" htmlClass="columns container white">
+		        <container name="sell.how.it.works.row" htmlTag="div" htmlClass="row row-flex">
+			        <container name="sell.how.it.works.col1" htmlTag="div" htmlClass="col-xs-12 col-lg-4">
+				        <container name="sell.how.it.works.col1.box" htmlTag="div" htmlId="box-1" htmlClass="col-xs-12 box">
+					        <block name="sell.emblem1" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/sellemblem.phtml" />
+							<block class="Magento\Cms\Block\Block" name="sell-desc-1-block">
+							    <arguments>
+							        <argument name="block_id" xsi:type="string">sell-desc-1</argument>
+							    </arguments>
+							</block>
+				        </container>
+			        </container>
+			        <container name="sell.how.it.works.col2" htmlTag="div" htmlClass="col-xs-12 col-lg-4">
+				        <container name="sell.how.it.works.col2.box" htmlTag="div" htmlId="box-2" htmlClass="col-xs-12 box">
+						    <block name="sell.emblem2" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/sellemblem.phtml" />
+							<block class="Magento\Cms\Block\Block" name="sell-desc-2-block">
+							    <arguments>
+							        <argument name="block_id" xsi:type="string">sell-desc-2</argument>
+							    </arguments>
+							</block>
+				        </container>
+			        </container>
+			        <container name="sell.how.it.works.col3" htmlTag="div" htmlClass="col-xs-12 col-lg-4">
+				        <container name="sell.how.it.works.col3.box" htmlTag="div" htmlId="box-3" htmlClass="col-xs-12 box">
+							<block name="sell.emblem3" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/sellemblem.phtml" />
+							<block class="Magento\Cms\Block\Block" name="sell-desc-3-block">
+							    <arguments>
+							        <argument name="block_id" xsi:type="string">sell-desc-3</argument>
+							    </arguments>
+							</block>
+				        </container>
+			        </container>
+		        </container>
+	        </container>
+        </container>
+        <container name="sell.benefits" htmlTag="div" htmlId="sell-benefits" htmlClass="not-fullscreen background parallax">
+	        <container name="sell.benefits.container" htmlTag="div" htmlClass="container">
+		        <container name="sell.benefits.row" htmlTag="div" htmlClass="row">
+			        <container name="sell.benefits.col" htmlTag="div" htmlClass="col-xs-12 col-lg-7">
+				        <container name="sell.benefits.box" htmlTag="div" htmlClass="col-xs-12 box white">
+							<block class="Magento\Cms\Block\Block" name="sell-benefits-block">
+							    <arguments>
+							        <argument name="block_id" xsi:type="string">sell-benefits</argument>
+							    </arguments>
+							</block>
+				        </container>
+			        </container>
+		        </container>
+	        </container>
+        </container>
+        <container name="sell.faq" htmlTag="div" htmlId="sell-faq">
+	        <!--block name="sell.faq.template" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/sellfaq.phtml" /-->
+			<block class="Magento\Cms\Block\Block" name="sell-faq-block">
+			    <arguments>
+			        <argument name="block_id" xsi:type="string">sell-faq</argument>
+			    </arguments>
+			</block>
+        </container>
+    </referenceContainer>
+    <referenceContainer name="content">
+		<block class="Magento\Cms\Block\Block" name="sell-intro-title">
+		    <arguments>
+		        <argument name="block_id" xsi:type="string">buyback-intro-title</argument>
+		    </arguments>
+		</block>
+		<block class="Magento\Cms\Block\Block" name="sell-intro-block">
+		    <arguments>
+		        <argument name="block_id" xsi:type="string">sell-intro</argument>
+		    </arguments>
+		</block>
+    </referenceContainer>
+</layout>

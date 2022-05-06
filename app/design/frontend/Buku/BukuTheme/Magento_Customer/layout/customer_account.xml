@@ -1,0 +1,49 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+    <body>
+	    <referenceContainer name="main">
+		    <container name="account.container.row" htmlTag="div" htmlClass="row row-flex" before="-">
+			    <container name="account.container.col1" htmlTag="div" htmlClass="col-xs-12 col-sm-6 col-lg-3" />
+			    <container name="account.container.col2" htmlTag="div" htmlClass="col-xs-12 col-sm-6 col-lg-3">
+				    <block class="Magento\Framework\View\Element\Html\Links" name="customer_account_navigation-orders" before="-" template="Magento_Customer::account/navorders.phtml" />
+			    </container>
+			    <container name="account.container.col3" htmlTag="div" htmlClass="col-xs-12 col-sm-6 col-lg-3">
+				    <block class="Magento\Framework\View\Element\Html\Links" name="customer_account_navigation-wishlist" before="-" template="Magento_Customer::account/navwish.phtml" />
+			    </container>
+			    <container name="account.container.col4" htmlTag="div" htmlClass="col-xs-12 col-sm-6 col-lg-3">
+				    <block class="Magento\Framework\View\Element\Html\Links" name="customer_account_navigation-activity" before="-" template="Magento_Customer::account/navactivity.phtml">
+		                <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-compare-products-link">
+		                    <arguments>
+		                        <argument name="label" xsi:type="string" translate="true">Compare Products</argument>
+		                        <argument name="path" xsi:type="string">#trigger-compare</argument>
+		                    </arguments>
+		                </block>
+				    </block>
+			    </container>
+		    </container>
+	    </referenceContainer>
+        <referenceBlock name="page.main.title" remove="true" />
+        <referenceBlock name="customer_account_dashboard_info" remove="true" />
+        <referenceBlock name="customer_account_dashboard_address" remove="true" />
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true" />
+        <referenceContainer name="columns.top">
+	        <block name="account.main.title" class="Magento\Framework\View\Element\Template" template="Magento_Customer::title.phtml" />
+        </referenceContainer>
+        <move element="customer_account_navigation" destination="account.container.col1" />
+        <move element="customer-account-navigation-billing-agreements-link" destination="customer_account_navigation-orders" />
+        <move element="customer-account-navigation-orders-link" destination="customer_account_navigation-orders"/>
+        <move element="customer-account-navigation-wish-list-link" destination="customer_account_navigation-wishlist" />
+        <move element="customer-account-navigation-product-reviews-link" destination="customer_account_navigation-activity" before="customer-account-navigation-compare-products-link" />
+        <!--referenceContainer name="div.sidebar.main" remove="true" />
+	    <referenceContainer name="div.sidebar.additional" remove="true" /-->
+	    <referenceBlock name="customer-account-navigation-address-link">
+	        <arguments>
+	            <argument name="label" xsi:type="string" translate="true">Manage Addresses</argument>
+	        </arguments>
+	    </referenceBlock>
+	    <!--referenceBlock name="customer_account_dashboard_top" remove="true" />
+	    <referenceBlock name="customer_account_dashboard_hello" remove="true" /-->
+	    <referenceBlock name="wishlist_sidebar" remove="true" />
+	    <referenceBlock name="sale.reorder.sidebar" remove="true" />
+	    <move element="catalog.compare.sidebar" destination="account.container.col4" />
+    </body>
+</page>

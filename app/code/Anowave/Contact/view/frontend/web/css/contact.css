@@ -1,0 +1,19 @@
+/**
+ * Contact form styles
+ */
+[data-form] fieldset { border:none; padding:0px; margin:0px; }
+[data-form] fieldset .field-row { display:block; margin:10px 0px 20px 0px; }
+[data-form] fieldset .field-row label { display:block; margin:10px 0px 5px 0px; }
+/*[data-form] fieldset input[type="text"] { display:block; padding:10px; }*/
+
+[data-form] fieldset .admin__field-option input, 
+[data-form] fieldset .admin__field-option label { float:left; display:block; }
+[data-form] fieldset .admin__field-option input { margin:15px 0px 5px 0px; }
+[data-form] fieldset .admin__field-option label { padding:2px 30px 2px 5px; cursor:pointer; }
+
+.field-row:before,
+.field-row:after { content: " ";  display: table; }
+.field-row:after { clear: both; }
+
+.form-confirmation { display:none; }
+.form-errors { display:none; }
